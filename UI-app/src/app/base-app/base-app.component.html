@@ -1,0 +1,202 @@
+<section class="homeApp" style="height: 100%;width:100%;">
+  <div class="container">
+    <div style="text-align: center; font-size: 40px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <h1>Bridge The Gap</h1>
+  </div>
+    <mat-horizontal-stepper [linear]="isLinear" labelPosition="bottom" *ngIf="!showresult" #stepper>
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Select Skill</ng-template>
+          <mat-form-field>
+            <mat-label>Select Skills</mat-label>
+            <mat-select [formControl]="industries" multiple>
+              <mat-option *ngFor="let industry of industryList" [value]="industry">{{industry}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Select Domain</ng-template>
+          <mat-form-field>
+            <mat-label>Select Domain</mat-label>          
+            <mat-select [formControl]="domains" multiple>
+              <mat-option *ngFor="let domain of domainList" [value]="domain">{{domain}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup" optional>
+        <form [formGroup]="thirdFormGroup">
+          <ng-template matStepLabel>Select Location</ng-template>
+          <mat-form-field>
+            <mat-label>Select Location</mat-label>
+            <mat-select [formControl]="locations" multiple>
+              <mat-option *ngFor="let location of locationList" [value]="locations">{{location}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fifthGroup" optional>
+        <form [formGroup]="fifthGroup">
+          <ng-template matStepLabel>Select Experience</ng-template>
+          <mat-form-field>
+            <mat-label>Select Experience</mat-label>
+            <mat-select [formControl]="exps" multiple>
+              <mat-option *ngFor="let exp of expList" [value]="exp">{{exp}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fourthGroup">
+        <form [formGroup]="fourthGroup">
+          <ng-template matStepLabel>Select Gap</ng-template>
+          <mat-form-field>
+            <mat-label>Select Gap</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let gap of gapList" [value]="gap">
+                {{gap}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div class="row">
+            <button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <h3 style="color:whitesmoke;">You are now done.</h3>
+        <div>
+          <div>
+            <button mat-button mat-raised-button color="accent" matStepperPrevious>Back</button>
+          
+         
+          <button mat-raised-button color="primary" (click)="showresult=true; ">Show Result</button>
+          </div>
+
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
+    
+
+
+
+  </div>
+  <mat-divider></mat-divider>
+  <div class="row" layout-wrap *ngIf="showresult" style="margin-left:50px; text-align: align;">
+    <h1 style="text-align: center;">Here are top matched job based on your selection!</h1>
+    <div class="grid-container">
+      <mat-grid-list cols="3" rowHeight="400px">
+          <mat-grid-tile [colspan]="1" [rowspan]="2">
+      <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title> 	Accenture India Pvt Ltd. - Bangalore</mat-card-title>
+        <mat-card-title > Job Title - Senior Analyst</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/img/1.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        
+          Skilmatch:-
+          <ul>
+            <li>Advertising - 45%</li>
+            <li>Event Management - 30%</li>
+          </ul>
+          
+        
+        <p>Increase your chances for selection. We recommend below courses</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button matTooltip="Your chances will increase by 15%." matBadge="15" matBadgeColor="warn" style="color: blue;" href="#" target="_blank">Six Sigma from Coursera</a>
+        <span class="material-icons">
+          trending_up
+          </span><a mat-button style="color:blue;" href="#" target="_blank">Softskills from LinkedIn</a>
+        
+        
+      </mat-card-actions>
+    </mat-card>  
+          </mat-grid-tile>
+          <mat-grid-tile [colspan]="1" [rowspan]="2">
+            <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"></div>
+              <mat-card-title> 	Flipkart India Pvt Ltd. - Bangalore</mat-card-title>
+              <mat-card-title > Job Title - Business Development Manager</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src="../../assets/img/3.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              
+                Skilmatch:-
+                <ul>
+                  <li>Advertising - 45%</li>
+                  <li>Management - 30%</li>
+                </ul>
+                
+              
+              <p>Increase your chances for selection. We recommend below courses</p>
+            </mat-card-content>
+            <mat-card-actions>
+              <a mat-button style="color: blue;" href="#" target="_blank">Effective Communication</a>
+              <a mat-button matTooltip="Your chances will increase by 23%." matBadge="23" style="color:blue;" href="#" target="_blank">Scrum master from edx</a>
+              <span class="material-icons">
+                trending_up
+                </span>
+              
+            </mat-card-actions>
+          </mat-card>  
+                </mat-grid-tile>
+                 <mat-grid-tile [colspan]="1" [rowspan]="2">
+             <mat-card class="example-card">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>MM Media Pvt Ltd - Mumbai</mat-card-title>
+        <mat-card-title>Job Title -Associate</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../assets/img/2.jpg" alt="Photo of a Shiba Inu">
+      <mat-card-content>
+        
+          Skilmatch to profile:-
+          <ul>
+            <li>Communication - 50%</li>
+            <li>Microsoft Office - 40%</li>
+          </ul>
+          
+        
+        <p>Increase your chances for selection. We recommend below courses</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <a mat-button style="color:blue" href="#" target="_blank">Python from courseERA</a>
+        <a mat-button style="color:blue;" href="#" target="_blank">Softskills from LinkedIn</a>
+        
+      </mat-card-actions>
+    </mat-card>  
+          </mat-grid-tile>
+      </mat-grid-list>
+  </div>
+  </div>
+  <div>
+    <button style="margin-left:550px; background-color:teal" mat-button mat-raised-button (click)="showresult=false; ">Try Again</button>
+    <button *ngIf="false" color="primary" mat-button mat-raised-button (click)="openDialog()">See latest trends here..</button>
+  </div>
+  </section>
